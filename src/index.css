@@ -10,7 +10,7 @@ body {
   background-color: rgb(14, 8, 46);
 }
 
-h1 {
+h1, h2, p {
   color: whitesmoke;
 }
 
