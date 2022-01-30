@@ -5,6 +5,7 @@ export interface ICalendarExtendedOptions extends ICalendarAntD<Moment> {}
 
 export interface IButtonComponent {
   option: (params: ICalendarExtendedOptions) => void
+  repaint: () => void
 }
 
 export interface ICalendarOptions {

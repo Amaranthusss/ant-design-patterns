@@ -2,11 +2,11 @@ import { useCallback, useEffect, useRef, useState, memo } from 'react'
 import { Calendar } from 'antd'
 import _ from 'lodash'
 
-import { IComponentOptions } from '../../components.interface'
 import {
   ICalendarExtendedOptions,
   ICalendarOptions,
 } from './Calendar.interface'
+import { IComponentOptions } from '../../components.interface'
 
 const CalendarPattern = (
   props: IComponentOptions<ICalendarOptions>
@@ -17,15 +17,20 @@ const CalendarPattern = (
     props.options?.calendarOptions ?? {}
   )
 
+  const repaint = useCallback((): void => {
+    forceUpdate(_.random(true))
+  }, [])
+
   const option = useCallback((params: ICalendarExtendedOptions): void => {
     calendarOptions.current = { ...calendarOptions.current, ...params }
-    forceUpdate(_.random(true))
+    repaint()
   }, [])
 
   useEffect(() => {
     if (_.isFunction(props.options.componentCallback)) {
       props.options.componentCallback({
         option,
+        repaint,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

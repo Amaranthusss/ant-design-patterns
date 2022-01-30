@@ -2,12 +2,12 @@ import { useCallback, useEffect, useRef, useState, memo } from 'react'
 import { Checkbox, Tooltip } from 'antd'
 import _ from 'lodash'
 
-import { IComponentOptions } from '../../components.interface'
 import {
   ICheckboxExtendedOptions,
   ICheckboxOptions,
   ITooltipExtendedOptions,
 } from './Checkbox.interface'
+import { IComponentOptions } from '../../components.interface'
 
 const CheckboxPattern = (
   props: IComponentOptions<ICheckboxOptions>
@@ -22,17 +22,21 @@ const CheckboxPattern = (
     props.options?.tooltipOptions ?? ({} as any)
   )
 
+  const repaint = useCallback((): void => {
+    forceUpdate(_.random(true))
+  }, [])
+
   const optionCheckbox = useCallback(
     (params: ICheckboxExtendedOptions): void => {
       checkboxOptions.current = { ...checkboxOptions.current, ...params }
-      forceUpdate(_.random(true))
+      repaint()
     },
     []
   )
 
   const optionTooltip = useCallback((params: ITooltipExtendedOptions): void => {
     tooltipOptions.current = { ...tooltipOptions.current, ...params }
-    forceUpdate(_.random(true))
+    repaint()
   }, [])
 
   useEffect(() => {
@@ -40,6 +44,7 @@ const CheckboxPattern = (
       props.options.componentCallback({
         optionCheckbox,
         optionTooltip,
+        repaint,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

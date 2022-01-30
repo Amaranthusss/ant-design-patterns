@@ -11,6 +11,7 @@ export interface ITooltipExtendedOptions extends TooltipPropsWithTitle {}
 export interface ICheckboxComponent {
   optionCheckbox: (params: ICheckboxExtendedOptions) => void
   optionTooltip: (params: ITooltipExtendedOptions) => void
+  repaint: () => void
 }
 
 export interface ICheckboxOptions {

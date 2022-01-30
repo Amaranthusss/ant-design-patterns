@@ -1,23 +1,15 @@
 import { useCallback, useEffect, useRef, useState, memo } from 'react'
-import { Button, Tooltip } from 'antd'
+import { Tooltip } from 'antd'
 import _ from 'lodash'
 
-import {
-  IButtonExtendedOptions,
-  IButtonOptions,
-  ITooltipExtendedOptions,
-} from './Button.interface'
+import { IAnyOptions, ITooltipExtendedOptions } from './Any.interface'
 import { IComponentOptions } from '../../components.interface'
 
-const ButtonPattern = (
-  props: IComponentOptions<IButtonOptions>
+const AnyPattern = (
+  props: IComponentOptions<IAnyOptions<any>>
 ): JSX.Element => {
   const [, forceUpdate] = useState<number>(0)
-
-  const buttonOptions = useRef<IButtonExtendedOptions>(
-    props.options?.buttonOptions ?? ({} as any)
-  )
-
+  const options = useRef<any>(props.options?.options ?? {})
   const tooltipOptions = useRef<ITooltipExtendedOptions>(
     props.options?.tooltipOptions ?? ({} as any)
   )
@@ -26,8 +18,8 @@ const ButtonPattern = (
     forceUpdate(_.random(true))
   }, [])
 
-  const optionButton = useCallback((params: IButtonExtendedOptions): void => {
-    buttonOptions.current = { ...buttonOptions.current, ...params }
+  const option = useCallback((params: any): void => {
+    options.current = { ...options.current, ...params }
     repaint()
   }, [])
 
@@ -39,7 +31,7 @@ const ButtonPattern = (
   useEffect(() => {
     if (_.isFunction(props.options.componentCallback)) {
       props.options.componentCallback({
-        optionButton,
+        optionComponent: option,
         optionTooltip,
         repaint,
       })
@@ -49,11 +41,11 @@ const ButtonPattern = (
 
   return (
     <Tooltip {...tooltipOptions.current}>
-      <Button {...buttonOptions.current}>
-        {buttonOptions.current?.text ?? ''}
-      </Button>
+      <props.options.element {...options.current}>
+        {options.current?.text ?? undefined}
+      </props.options.element>
     </Tooltip>
   )
 }
 
-export default memo(ButtonPattern, () => true)
+export default memo(AnyPattern, () => true)

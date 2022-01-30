@@ -11,6 +11,7 @@ export interface ITooltipExtendedOptions extends TooltipPropsWithTitle {}
 export interface IButtonComponent {
   optionButton: (params: IButtonExtendedOptions) => void
   optionTooltip: (params: ITooltipExtendedOptions) => void
+  repaint: () => void
 }
 
 export interface IButtonOptions {
