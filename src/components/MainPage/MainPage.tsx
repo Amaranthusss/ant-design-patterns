@@ -13,17 +13,24 @@ import { ICalendarOptions } from '../_antDesign/Calendar/Calendar.interface'
 
 const MainPage = (): JSX.Element => {
   const controlledButtonComponent = useRef<IButtonComponent>()
-  const controlledButtonIcon = useRef<JSX.Element>()
+  const controlledButtonIcon = useRef<JSX.Element>(
+    <StepBackwardOutlined name={'stepBackwardOutlined'} />
+  )
 
-  const setIconAtSecondButton = (): void => {
-    switch (controlledButtonIcon.current) {
-      case (<StepForwardOutlined />):
-        controlledButtonIcon.current = <StepBackwardOutlined />
+  const toggleIconAtSecondButton = (): void => {
+    switch (controlledButtonIcon.current?.props.name as string) {
+      case 'stepForwardOutlined':
+        controlledButtonIcon.current = (
+          <StepBackwardOutlined name={'stepBackwardOutlined'} />
+        )
         break
-      case (<StepBackwardOutlined />):
-        controlledButtonIcon.current = <StepForwardOutlined />
+      default:
+        controlledButtonIcon.current = (
+          <StepForwardOutlined name={'stepForwardOutlined'} />
+        )
         break
     }
+
     controlledButtonComponent.current?.optionButton({
       icon: controlledButtonIcon.current,
     })
@@ -35,8 +42,8 @@ const MainPage = (): JSX.Element => {
     },
     buttonOptions: {
       type: 'primary',
-      text: `Let's change the icon of second button! 😊`,
-      onClick: setIconAtSecondButton,
+      text: `I can control below button, let's click me 😊`,
+      onClick: toggleIconAtSecondButton,
     },
   })
 
@@ -45,7 +52,7 @@ const MainPage = (): JSX.Element => {
       controlledButtonComponent.current = component
     },
     buttonOptions: {
-      icon: <StepForwardOutlined />,
+      icon: controlledButtonIcon.current,
       type: 'primary',
       text: `He controls me! 😢`,
     },
