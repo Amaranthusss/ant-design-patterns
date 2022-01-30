@@ -1,5 +1,6 @@
 import { DownOutlined, MailOutlined } from '@ant-design/icons'
-import { useRef } from 'react'
+import moment from 'moment'
+import { useCallback, useRef } from 'react'
 
 import Button from '../_antDesign/Button/Button'
 
@@ -7,6 +8,8 @@ import {
   IButtonComponent,
   IButtonOptions,
 } from '../_antDesign/Button/Button.interface'
+import Calendar from '../_antDesign/Calendar/Calendar'
+import { ICalendarOptions } from '../_antDesign/Calendar/Calendar.interface'
 
 const MainPage = (): JSX.Element => {
   const buttonControlledComponent = useRef<IButtonComponent>()
@@ -38,14 +41,31 @@ const MainPage = (): JSX.Element => {
     tooltipOptions: { title: 'Test button tooltip' },
   })
 
+  const calendarDateCellRender = useCallback(
+    (date: moment.Moment): JSX.Element => {
+      console.log(date.date())
+      return <span />
+    },
+    []
+  )
+
+  const calendarOptions = useRef<ICalendarOptions>({
+    calendarOptions: {
+      mode: 'month',
+      fullscreen: true,
+      dateCellRender: calendarDateCellRender,
+    },
+  })
+
   return (
-    <div>
+    <>
       <h1>Examples:</h1>
-      <br />
       <Button options={buttonReleasingEventOptions.current} />
-      <br />
       <Button options={buttonControlledOptions.current} />
-    </div>
+      <div style={{ width: '500px' }}>
+        <Calendar options={calendarOptions.current} />
+      </div>
+    </>
   )
 }
 
