@@ -10,6 +10,8 @@ import {
 } from '../_antDesign/Button/Button.interface'
 import Calendar from '../_antDesign/Calendar/Calendar'
 import { ICalendarOptions } from '../_antDesign/Calendar/Calendar.interface'
+import Checkbox from '../_antDesign/Checkbox/Checkbox'
+import { ICheckboxOptions } from '../_antDesign/Checkbox/Checkbox.interface'
 
 const MainPage = (): JSX.Element => {
   const controlledButtonComponent = useRef<IButtonComponent>()
@@ -79,16 +81,27 @@ const MainPage = (): JSX.Element => {
     },
   })
 
+  const checkboxOptions = useRef<ICheckboxOptions>({
+    checkboxOptions: {
+      text: 'U can uncheck me 😃',
+      defaultChecked: true,
+      style: { color: 'whitesmoke' },
+    },
+    tooltipOptions: { title: 'This is checkbox' },
+  })
+
   return (
     <div>
       <h1>Examples:</h1>
-      <h2>Buttons</h2>
+      <h2>Buttons with tooltips</h2>
       <Button options={buttonReleasingEventOptions.current} />
       <br />
       <Button options={buttonControlledOptions.current} />
       <h2>Calendar</h2>
       <p>Look at console log 😁</p>
       <Calendar options={calendarOptions.current} />
+      <h2>Checkbox with tooltip</h2>
+      <Checkbox options={checkboxOptions.current} />
     </div>
   )
 }
