@@ -4,7 +4,7 @@ Extended Ant Design components by controllers.
 
 ## When do you should use this solution?
 
-If you want to control [Ant Design](https://ant.design/) React components you can save your time by use prepared patterns. You do not more need focus at React states and rerendering problems. You can jsut use prepared methods like for example `option()` to change Ant Design component's props and rerender that again.
+If you want to control [Ant Design](https://ant.design/) React components you can save your time by use prepared patterns. You do not more need focus at React states and rerendering problems. You can just use prepared methods like for example `option()` to change Ant Design component's props and render that again.
 
 ## What is HOC idea?
 
