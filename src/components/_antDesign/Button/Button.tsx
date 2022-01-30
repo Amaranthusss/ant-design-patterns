@@ -24,12 +24,12 @@ const ButtonPattern = (
 
   const optionButton = useCallback((params: IButtonExtendedOptions): void => {
     buttonOptions.current = { ...buttonOptions.current, ...params }
-    forceUpdate(_.random())
+    forceUpdate(_.random(true))
   }, [])
 
   const optionTooltip = useCallback((params: ITooltipExtendedOptions): void => {
     tooltipOptions.current = { ...tooltipOptions.current, ...params }
-    forceUpdate(_.random())
+    forceUpdate(_.random(true))
   }, [])
 
   useEffect(() => {
