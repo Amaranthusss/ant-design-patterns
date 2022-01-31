@@ -1,6 +1,7 @@
 # Ant Design Patterns 
 
 `useAntPattern` Hook - v1.0.1\
+\
 Extended Ant Design components by controllers.
 
 ## When do you should use this solution?
@@ -14,7 +15,7 @@ You can read more about hooks in React at [official documentation](https://react
 ## What `useAntPattern` hook requires?
 
 - [Ant Design](https://ant.design/)
-- [React v16.8v or newer](https://reactjs.org/docs/hooks-intro.html)
+- [React v16.8+](https://reactjs.org/docs/hooks-intro.html)
 - [Lodash](https://lodash.com/)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/react.html)
 
@@ -23,7 +24,7 @@ You can read more about hooks in React at [official documentation](https://react
 ### Usage Example:
 
 Options definiton:\
-`const buttonOptions = useRef<IPatternOptions<ButtonProps>>({ element: Button, //imported from 'antd' default: { type: 'primary', children: `I can change my icon 😊`, onClick: setIcon } })`
+`const buttonOptions = useRef<IPatternOptions<ButtonProps>>({ element: Button, //imported from 'antd' default: { type: 'primary', children: 'I can change my icon 😊', onClick: setIcon } })`
 
 Hook call:\
 `const buttonPattern = useAntPattern(buttonOptions.current)`
