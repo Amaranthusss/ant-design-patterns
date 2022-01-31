@@ -1,5 +1,5 @@
-import { Button, ButtonProps, Input, InputProps } from 'antd'
 import { StepForwardOutlined, StepBackwardOutlined } from '@ant-design/icons'
+import { Button, ButtonProps } from 'antd'
 import { useRef } from 'react'
 
 import useAntPattern from '../../../hooks/useAntPattern'
@@ -53,7 +53,7 @@ const ButtonExample = (): JSX.Element => {
     buttonToChangeIconOptions.current
   )
 
-  return (
+	return (
     <>
       <h2>Buttons with tooltips</h2>
       {buttonToChangeIconPattern.element}
