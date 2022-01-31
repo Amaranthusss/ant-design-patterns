@@ -13,10 +13,10 @@ You can read more about hooks in React at [official documentation](https://react
 
 ## What `useAntPattern` hook requires?
 
-- Item [Ant Design](https://ant.design/)
-- Item [React v16.8v or newer](https://reactjs.org/docs/hooks-intro.html)
-- Item [Lodash](https://lodash.com/)
-- Item [TypeScript](https://www.typescriptlang.org/docs/handbook/react.html)
+- [Ant Design](https://ant.design/)
+- [React v16.8v or newer](https://reactjs.org/docs/hooks-intro.html)
+- [Lodash](https://lodash.com/)
+- [TypeScript](https://www.typescriptlang.org/docs/handbook/react.html)
 
 ## How to use `useAntPattern` hook?
 
@@ -36,8 +36,8 @@ Controller call:\
 
 ### Extensions:
 
-- Item Each Ant Design component returned from `useAntPattern` hook has additional parameter at `default` settings named `children` type of `string | any`. That parameter means JSX code inside rendered component. For example for button or checkbox it means displayed text.
-- Item When do you need change value of components based on `form`, `input`, `textareas`, you can use controller method `setValue`. That requirement exists for reason described at [React documentation](https://reactjs.org/docs/forms.html). This method is connected to `onChange` event. For this moment `onValuesChange` is not supported.
+- Each Ant Design component returned from `useAntPattern` hook has additional parameter at `default` settings named `children` type of `string | any`. That parameter means JSX code inside rendered component. For example for button or checkbox it means displayed text.
+- When do you need change value of components based on `form`, `input`, `textareas`, you can use controller method `setValue`. That requirement exists for reason described at [React documentation](https://reactjs.org/docs/forms.html). This method is connected to `onChange` event. For this moment `onValuesChange` is not supported.
 
 ## Available Scripts
 
