@@ -1,5 +1,6 @@
-# Ant Design Patterns - `useAntPattern` Hook - v1.0.1
+# Ant Design Patterns 
 
+`useAntPattern` Hook - v1.0.1\
 Extended Ant Design components by controllers.
 
 ## When do you should use this solution?
@@ -19,17 +20,18 @@ You can read more about hooks in React at [official documentation](https://react
 
 ## How to use `useAntPattern` hook?
 
-###Usage Example:
-Options definiton:
+### Usage Example:
+
+Options definiton:\
 `const buttonOptions = useRef<IPatternOptions<ButtonProps>>({ element: Button, //imported from 'antd' default: { type: 'primary', children: `I can change my icon 😊`, onClick: setIcon } })`
 
-Hook call:
+Hook call:\
 `const buttonPattern = useAntPattern(buttonOptions.current)`
 
-JSX element:
+JSX element:\
 `<>{buttonPattern.element}</>`
 
-Controller call:
+Controller call:\
 `const setIcon = (): void => {buttonToChangePattern.controller.update({ icon: <StepBackwardOutlined /> }) }`
 
 ### Extensions:
@@ -49,13 +51,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## Learn More About React:
+## Learn More About React
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-# License
+## License
 
 MIT License
 Copyright (c) 2022 Amaranthusss - Oskar Szkurłat
