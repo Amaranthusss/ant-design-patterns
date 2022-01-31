@@ -18,10 +18,12 @@ const useAntPattern = (props: IPatternOptions<any>) => {
 
   const option = useCallback((params: any): void => {
     setOptions({ ...options, ...params })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const optionTooltip = useCallback((params: ITooltipExtendedOptions): void => {
     setTooltipOptions({ ...tooltipOptions, ...params })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onChange = useCallback(
