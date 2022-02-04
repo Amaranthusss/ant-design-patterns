@@ -45,8 +45,6 @@ const AntPattern = (props: IComponentOptions<IAntPatternOptions<any>>) => {
     []
   )
 
-  console.log('Ant pattern rendered')
-
   return (
     <Tooltip {...tooltipOptions}>
       <props.options.element {...options} onChange={onChange} value={value}>

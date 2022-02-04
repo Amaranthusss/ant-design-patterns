@@ -5,7 +5,7 @@ import InputExample from './InputExample/InputExample'
 import ButtonExample from './ButtonExample/ButtonExample'
 import TableExample from './TableExample/TableExample'
 
-const MainPage = (): JSX.Element => {
+const Examples = (): JSX.Element => {
   return (
     <div style={{ width: '100%' }}>
       <Row align={'middle'} justify={'center'}>
@@ -32,4 +32,4 @@ const MainPage = (): JSX.Element => {
   )
 }
 
-export default MainPage
+export default Examples
