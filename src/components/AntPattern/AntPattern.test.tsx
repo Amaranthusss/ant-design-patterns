@@ -1,5 +1,6 @@
 import { Button, ButtonProps, Input, InputProps, Table, TableProps } from 'antd'
 import { render } from '@testing-library/react'
+import _ from 'lodash'
 import '@testing-library/jest-dom'
 
 import AntPattern from './AntPattern'
@@ -7,7 +8,6 @@ import AntPattern from './AntPattern'
 import { ColumnsType as IColumnsType } from 'antd/lib/table'
 import { IAntPatternComponent } from './AntPattern.interface'
 import { IAntPatternOptions } from './AntPattern.interface'
-import _ from 'lodash'
 
 const testText: string = 'test-text'
 
