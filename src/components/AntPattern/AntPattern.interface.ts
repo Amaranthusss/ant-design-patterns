@@ -6,19 +6,22 @@ export interface ITooltipExtendedOptions extends TooltipPropsWithTitle {}
 export type IValue = string | number | readonly string[] | undefined
 
 export interface IPatternPropsExtension {
-  children: string | JSX.Element
+  /** JSX element inside Ant Design Pattern Component. Example: displayed text for Checkbox */
+  children?: string | JSX.Element
 }
 
-export interface IPatternComponent<IPatternProps> {
+export interface IAntPatternComponent<IPatternProps> {
   /** Update any param of Ant Design component */
   update: (params: IPatternProps & IPatternPropsExtension) => void
   /** Update any param of Ant Design Tooltip component */
   updateTooltip: (params: ITooltipExtendedOptions) => void
   /** Method to control forms, inputs, textareas */
-  setValue: (value: IValue) => void
+  setValue: React.Dispatch<React.SetStateAction<IValue>>
 }
 
-export interface IPatternOptions<IPatternProps> {
+export interface IAntPatternOptions<IPatternProps> {
+  /** Method returns controller of Ant Design Pattern component */
+  controllerCallback?: (controller: IAntPatternComponent<IPatternProps>) => void
   /** Ant Design any component */
   element: any
   /** Ant Design any component's props */

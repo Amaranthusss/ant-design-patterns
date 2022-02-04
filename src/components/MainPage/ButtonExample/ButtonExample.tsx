@@ -2,11 +2,13 @@ import { StepForwardOutlined, StepBackwardOutlined } from '@ant-design/icons'
 import { Button, ButtonProps } from 'antd'
 import { useRef } from 'react'
 
-import useAntPattern from '../../../hooks/useAntPattern'
+import AntPattern from '../../AntPattern/AntPattern'
 
-import { IPatternOptions } from '../../../hooks/useAntPattern/interface'
+import { IAntPatternComponent } from '../../AntPattern/AntPattern.interface'
+import { IAntPatternOptions } from '../../AntPattern/AntPattern.interface'
 
 const ButtonExample = (): JSX.Element => {
+  const buttonToChangePatternCtrl = useRef<IAntPatternComponent<ButtonProps>>()
   const controlledButtonIcon = useRef<JSX.Element>(
     <StepBackwardOutlined name={'stepBackwardOutlined'} />
   )
@@ -25,12 +27,12 @@ const ButtonExample = (): JSX.Element => {
         break
     }
 
-    buttonToChangePattern.controller.update({
+    buttonToChangePatternCtrl.current?.update({
       icon: controlledButtonIcon.current,
     })
   }
 
-  const buttonToChangeIconOptions = useRef<IPatternOptions<ButtonProps>>({
+  const buttonToChangeIconOptions = useRef<IAntPatternOptions<ButtonProps>>({
     element: Button,
     default: {
       type: 'primary',
@@ -39,26 +41,24 @@ const ButtonExample = (): JSX.Element => {
     },
   })
 
-  const buttonToChangeOptions = useRef<IPatternOptions<ButtonProps>>({
+  const buttonToChangeOptions = useRef<IAntPatternOptions<ButtonProps>>({
     element: Button,
     default: {
       icon: controlledButtonIcon.current,
       type: 'default',
       children: `He controls me! 😢`,
     },
+    controllerCallback: (controller: IAntPatternComponent<ButtonProps>) => {
+      buttonToChangePatternCtrl.current = controller
+    },
   })
 
-  const buttonToChangePattern = useAntPattern(buttonToChangeOptions.current)
-  const buttonToChangeIconPattern = useAntPattern(
-    buttonToChangeIconOptions.current
-  )
-
-	return (
+  return (
     <>
       <h2>Buttons with tooltips</h2>
-      {buttonToChangeIconPattern.element}
+      <AntPattern options={buttonToChangeIconOptions.current} />
       <br />
-      {buttonToChangePattern.element}
+      <AntPattern options={buttonToChangeOptions.current} />
     </>
   )
 }

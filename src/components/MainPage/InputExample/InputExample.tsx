@@ -1,21 +1,29 @@
 import { Button, ButtonProps, Input, InputProps } from 'antd'
+import _ from 'lodash'
 import { useRef } from 'react'
 
-import useAntPattern from '../../../hooks/useAntPattern'
+import AntPattern from '../../AntPattern/AntPattern'
 
-import { IPatternOptions } from '../../../hooks/useAntPattern/interface'
+import { IAntPatternComponent } from '../../AntPattern/AntPattern.interface'
+import { IAntPatternOptions } from '../../AntPattern/AntPattern.interface'
 
 const InputExample = (): JSX.Element => {
-  const inputToChangeOptions = useRef<IPatternOptions<InputProps>>({
+  const inputToChangePatternCtrl = useRef<IAntPatternComponent<InputProps>>()
+  const inputToChangeOptions = useRef<IAntPatternOptions<InputProps>>({
     element: Input,
     default: { showCount: true },
+    controllerCallback: (controller: IAntPatternComponent<InputProps>) => {
+      inputToChangePatternCtrl.current = controller
+    },
   })
 
   const setWatermelonAtInput = (): void => {
-    inputToChangePattern.controller.setValue('Watermelon')
+    if (_.isFunction(inputToChangePatternCtrl.current?.setValue)) {
+      inputToChangePatternCtrl.current?.setValue('Watermelon')
+    }
   }
 
-  const buttonToChangeInputOptions = useRef<IPatternOptions<ButtonProps>>({
+  const buttonToChangeInputOptions = useRef<IAntPatternOptions<ButtonProps>>({
     element: Button,
     default: {
       type: 'primary',
@@ -24,16 +32,11 @@ const InputExample = (): JSX.Element => {
     },
   })
 
-  const inputToChangePattern = useAntPattern(inputToChangeOptions.current)
-  const buttonToChangeInputPattern = useAntPattern(
-    buttonToChangeInputOptions.current
-  )
-
   return (
     <>
       <h2>Input pattern</h2>
-      {inputToChangePattern.element}
-      {buttonToChangeInputPattern.element}
+      <AntPattern options={inputToChangeOptions.current} />
+      <AntPattern options={buttonToChangeInputOptions.current} />
     </>
   )
 }
