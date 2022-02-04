@@ -27,16 +27,16 @@ Step 0. Optional: Prepare controller component object:\
 `const buttonCtrl = useRef<IAntPatternComponent<ButtonProps>>()`
 
 Step 1. Prepare component options object:\
-`const buttonOptions = useRef<IAntPatternOptions<ButtonProps>>({  
-  element: Button,  
-  default: {  
-    type: 'primary',  
-    children: 'I can control below button, let's click me 😊',  
-    onClick: toggleIconAtSecondButton,  
-  },  
-  controllerCallback: (controller: IAntPatternComponent<ButtonProps>) => {  
-    buttonCtrl.current = controller  
-  },  
+`const buttonOptions = useRef<IAntPatternOptions<ButtonProps>>({ <br />
+  element: Button, <br />
+  default: { <br />
+    type: 'primary', <br />
+    children: 'I can control below button, let's click me 😊', <br />
+    onClick: toggleIconAtSecondButton, <br />
+  }, <br />
+  controllerCallback: (controller: IAntPatternComponent<ButtonProps>) => { <br />
+    buttonCtrl.current = controller <br />
+  }, <br />
 })
 `
 
