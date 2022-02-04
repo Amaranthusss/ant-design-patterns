@@ -23,29 +23,36 @@ You can read more about hooks in React at [official documentation](https://react
 
 ### Usage Example:
 
-Step 0. Optional: Prepare controller component object:\
-`const buttonCtrl = useRef<IAntPatternComponent<ButtonProps>>()`
+Step 0. Optional: Prepare controller component object:
+```typescript
+const buttonCtrl = useRef<IAntPatternComponent<ButtonProps>>()
+```
 
-Step 1. Prepare component options object:\
-`const buttonOptions = useRef<IAntPatternOptions<ButtonProps>>({`\
-`  element: Button,`\
-`  default: {`\
-`    type: 'primary',`\
-`    children: 'I can control below button, let's click me 😊',`\
-`    onClick: toggleIconAtSecondButton,`\
-`  },`\
-`  controllerCallback: (controller: IAntPatternComponent<ButtonProps>) => {`\
-`    buttonCtrl.current = controller`\
-`  },`\
-`})`\
+Step 1. Prepare component options object:
+```typescript
+const buttonOptions = useRef<IAntPatternOptions<ButtonProps>>({
+  element: Button,
+  default: {
+    type: 'primary',
+    children: `It's text inside button 😊`,
+    onClick: onClickHandler,
+  },
+  controllerCallback: (controller: IAntPatternComponent<ButtonProps>) => {
+    buttonCtrl.current = controller
+  },
+})
+```
 
-Step 2. Call component:\
-`<AntPattern options={buttonOptions.current}/>`
+Step 2. Call component in JSX:
+```jsx
+<AntPattern options={buttonOptions.current}/>
+```
 
 ### Extensions:
 
 - Each Ant Design Pattern component at `default` settings has additional parameter named `children` type of `string | any`. That parameter means JSX code inside rendered component. For example for button or checkbox it means displayed text.
 - When do you need change value of components based on `form`, `input`, `textareas`, you can use controller method `setValue`. That requirement exists for reason described at [React documentation](https://reactjs.org/docs/forms.html). This method is connected to `onChange` event. For this moment `onValuesChange` is not supported.
+- Rest of params is the same as at Ant Design documentation of selected component.
 
 ## Available Scripts
 
